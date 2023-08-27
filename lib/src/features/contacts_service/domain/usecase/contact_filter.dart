@@ -1,10 +1,5 @@
-import 'package:kindblood_server/src/core/entities/contact_info.dart';
-import 'package:kindblood_server/src/core/entities/blood_group.dart';
-import 'package:kindblood_server/src/core/entities/blood_compatibility_info.dart';
-import 'package:kindblood_server/src/core/entities/length_units.dart';
-import '../entities/search_info.dart';
-import 'calculate_distance.dart';
-import 'get_blood_compatibility.dart';
+import 'package:kindblood_common/core_entities.dart';
+import 'package:kindblood_common/utils.dart';
 import 'dart:convert';
 
 bool _doesContactPassFilter({

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:fpdart/fpdart.dart';
-import 'package:kindblood_server/src/core/entities/myinfo_entity.dart';
+import 'package:kindblood_common/core_entities.dart';
 import 'package:kindblood_server/src/core/status_objects/failure.dart';
 import 'package:kindblood_server/src/core/status_objects/success.dart';
 import '../repository/contact_repository.dart';
