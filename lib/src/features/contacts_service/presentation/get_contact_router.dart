@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 import '../domain/usecase/get_contact.dart';
+import 'package:kindblood_common/constants.dart';
 part 'get_contact_router.g.dart';
 
 abstract class GetContactService {
@@ -14,12 +15,18 @@ class GetContactServiceImpl implements GetContactService {
 
   @Route.post("/")
   Future<Response> getContactEndpoint(Request request) async {
-    var got = await request.readAsString();
+    var gotMap = jsonDecode(await request.readAsString());
+    var gotSearchInfoMap =
+        gotMap[JsonKeys.searchInfoJsonKey] as Map<String, dynamic>;
+    var gotSortByMap = gotMap[JsonKeys.sortByJsonKey] as Map<String, dynamic>;
     var contactsList = await getContactUseCase.getSearchResultContacts(
-        searchInfoJsonString: got);
+      searchInfoMap: gotSearchInfoMap,
+      sortByMap: gotSortByMap,
+    );
     return contactsList.fold(
       (l) => Response.badRequest(),
       (r) => Response.ok(
+        headers: {"Content-Type": "application/json"},
         jsonEncode(r),
       ),
     );

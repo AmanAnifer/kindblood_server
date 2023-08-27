@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:kindblood_server/src/features/contacts_service/domain/usecase/contact_filter.dart';
+import 'package:kindblood_server/src/features/contacts_service/domain/usecase/contact_filter_sql_function.dart';
 import 'package:kindblood_server/src/features/contacts_service/domain/usecase/submit_contact.dart';
 import 'package:kindblood_server/src/features/contacts_service/presentation/submit_contact_router.dart';
 import 'package:sqlite3/sqlite3.dart';
@@ -27,8 +27,8 @@ Future<void> init() async {
       db: sl(),
     ),
   );
-  sl.registerLazySingleton<ContactFilterSQLUtils>(
-    () => ContactFilterSQLUtils(),
+  sl.registerLazySingleton<SQLBusinessLogicFunctions>(
+    () => SQLBusinessLogicFunctions(),
   );
   sl.registerLazySingleton<ContactDataStore>(
     () => SQLiteContactDataStore(

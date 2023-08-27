@@ -10,11 +10,14 @@ class ContactRepositoryImpl implements ContactRepository {
   ContactRepositoryImpl({required this.contactDataStore});
 
   @override
-  Future<Either<Failure, List<OnlineContactInfo>>> getSearchResultContacts({
-    required OnlineSearchInfo searchInfo,
+  Future<Either<Failure, List<ContactInfo>>> getSearchResultContacts({
+    required SearchInfo searchInfo,
+    // required SortBy sortBy,
   }) async {
     return (await contactDataStore.getSearchResultContacts(
-            searchInfo: searchInfo))
+      searchInfo: searchInfo,
+      // sortBy: sortBy,
+    ))
         .fold(
       (l) => Either.left(DatabaseFailure()),
       (r) => Either.right(r),

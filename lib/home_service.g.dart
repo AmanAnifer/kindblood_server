@@ -13,6 +13,11 @@ Router _$HomeServiceRouter(HomeService service) {
     r'/',
     service.index,
   );
+  router.add(
+    'GET',
+    r'/version',
+    service.version,
+  );
   router.mount(
     r'/getContact/',
     service.getContact,

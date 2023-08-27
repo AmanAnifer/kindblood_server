@@ -3,12 +3,18 @@ import 'package:shelf/shelf.dart';
 import 'package:shelf_router/shelf_router.dart';
 import 'src/features/contacts_service/presentation/get_contact_router.dart';
 import 'src/injectable_barrel.dart';
+import 'src/core/string_contacts.dart';
 part 'home_service.g.dart';
 
 class HomeService {
   @Route.get("/")
   Future<Response> index(Request request) async {
     return Response.ok("Hello there");
+  }
+
+  @Route.get("/version")
+  Future<Response> version(Request request) async {
+    return Response.ok(versionCode);
   }
 
   @Route.mount("/getContact/")
