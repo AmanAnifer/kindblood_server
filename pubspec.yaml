@@ -17,7 +17,7 @@ dependencies:
   shelf_router: ^1.1.4
   sqlite3: ^2.0.0
   kindblood_common:
-    path: ../kindblood_common
+    git: https://github.com/AmanAnifer/kindblood_common.git
 
 dev_dependencies:
   build_runner: ^2.4.6
